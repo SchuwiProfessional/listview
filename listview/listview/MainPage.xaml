@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="listview.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Lista de cursos" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <!--   <ListView
+            BackgroundColor="White"
+            SeparatorColor="Blue">
+         <ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Word</x:String>
+                    <x:String>SQL</x:String>
+                    <x:String>JAVA</x:String>
+                    <x:String>Azure</x:String>
+                    <x:String>Linux</x:String>
+                </x:Array>
+            </ListView.ItemsSource>-
+        </ListView>-->
+        <ListView
+            ItemsSource="{Binding LCursos}"
+            Margin="20"
+            HasUnevenRows="True"
+            ItemSelected="ListView_ItemSelected"
+            ItemTapped="ListView_ItemTapped">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="50"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image 
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                HeightRequest="60"
+                                WidthRequest="60"
+                                Aspect="AspectFill"
+                                Source="{Binding Logo}">
+                            </Image>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="{Binding Nombre}">
+                            </Label>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Text="{Binding Duracion}">
+                            </Label>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                Text="{Binding Costo}">
+                            </Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
